@@ -66,7 +66,10 @@ class SnakeGameAI:
         y = random.randint(0, (self.h-self.BLOCK_SIZE )//self.BLOCK_SIZE )*self.BLOCK_SIZE
         self.food = Point(x, y)
         if self.food in self.snake:
-            self._place_food()
+            if len(self.snake)>= (self.w//self.BLOCK_SIZE * self.h//self.BLOCK_SIZE):
+                self.quit_game()
+            else:
+                self._place_food()
             
         
     def play_step(self,action,shortestPath=None,n_game=None):
