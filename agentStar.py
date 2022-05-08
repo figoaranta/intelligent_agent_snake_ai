@@ -17,7 +17,7 @@ class Node:
     def __init__(self, parent=None, position=None):
         self.parent = parent
         self.position = position
-
+        
         self.g = 0
         self.h = 0
         self.f = 0
@@ -199,6 +199,7 @@ def generateAdjacentMatrix(w,h):
     #         graph[row][row - (block)] = 1
     #     if (row) < (len(graph[row])-block) : # this is not the bottom
     #         graph[row][row + (block) ] = 1
+    # graph[0][1] = 1
 
     return graph
 
@@ -207,6 +208,7 @@ class AgentStar():
 
     def __init__(self,game):
         self.maze = generateAdjacentMatrix(game.w,game.h)
+        self.move = 0
 
     def get_state(self,game):
         head = game.snake[0]

@@ -19,10 +19,10 @@ if __name__ == '__main__':
     # agent.model.load(model_name='dq2')
 
     # Uncomment below for Agent Star
-    agent =  AgentStar(game)
+    # agent =  AgentStar(game)
 
     # Uncomment below for Agent Hamiltonian
-    # agent =  AgentHamilton(game)
+    agent =  AgentHamilton(game)
 
     
     while True:

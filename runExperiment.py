@@ -9,6 +9,7 @@ if __name__ == '__main__':
     
     environmentGrids = [(400,400),(320,320),(240,240)]
     agents = ["dq1","dq2","hamilton","aStar"]
+    
     for w,h in environmentGrids:
         print("Environment Grid:",w,h)
         game = SnakeGameAI(w,h)
@@ -30,12 +31,15 @@ if __name__ == '__main__':
                 state_old = agent.get_state(game)
                 action,path = agent.get_action(state_old,True)
                 reward, game_over, score = game.play_step(action,path,n_game+1)
-                if game_over:
+                agent.move +=1
+                if game_over and agent.move !=1:
+                    agent.move = 0
                     n_game+=1
                     # print("Game:",n_game)
                     # print("Score:",game.score)
                     scores.append(game.score)
                     game.reset()
+
             print(scores)
             print("Higest Score:",max(scores))
             print("Standard Deviation:",np.std(scores))

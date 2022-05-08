@@ -20,6 +20,7 @@ class AgentDeepQ:
         self.model = Linear_Qnet(input,hidden,output)
         self.trainer = QTrainer(self.model,LR,self.gamma)
         self.input = input
+        self.move = 0
     
     def get_state(self,game):
         head = game.snake[0]

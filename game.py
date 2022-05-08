@@ -3,7 +3,7 @@ import random
 from enum import Enum
 from collections import namedtuple
 import numpy as np
-
+import time
 pygame.init()
 font = pygame.font.Font('arial.ttf', 25)
 
@@ -23,7 +23,7 @@ BLUE2 = (0, 100, 255)
 BLACK = (0,0,0)
 GREEN = (127,255,0)
 
-SPEED = 40
+SPEED = 500
 
 class SnakeGameAI:
     
@@ -60,7 +60,7 @@ class SnakeGameAI:
         self.food = Point(x, y)
         if self.food in self.snake:
             if len(self.snake)>= (self.w//self.BLOCK_SIZE * self.h//self.BLOCK_SIZE):
-                self.quit_game()
+                pass
             else:
                 self._place_food()
             
@@ -91,7 +91,10 @@ class SnakeGameAI:
         if self.is_collision():# or self.frame_iteration > 100*len(self.snake):
             game_over = True
             reward -= 10
+            # time.sleep(2)
             return reward, game_over, self.score
+        if len(self.snake)>= (self.w//self.BLOCK_SIZE * self.h//self.BLOCK_SIZE):
+            game_over = True
             
         # 4. place new food or just move
         if self.head == self.food:
@@ -105,6 +108,7 @@ class SnakeGameAI:
         self._update_ui(shortestPath,n_game)
         self.clock.tick(SPEED)
         # 6. return game over and score
+
         return reward, game_over, self.score
     
     def is_collision(self,pt=None):

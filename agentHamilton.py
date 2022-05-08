@@ -6,6 +6,7 @@ import random
 class AgentHamilton:
     def __init__(self,game):
         self.block_size = 20
+        self.move = 0
         self.maze = [ [0 for i in range(game.w//20)] for j in range(game.h//20) ]
         self.maze, self.hamiltonianPath = self.generateHamiltonian(self.maze)
         self.NoHamiltonian = (game.w//20 * game.h//20) %2 != 0
