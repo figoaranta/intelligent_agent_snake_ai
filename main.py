@@ -22,7 +22,7 @@ if __name__ == '__main__':
     # agent =  AgentStar(game)
 
     # Uncomment below for Agent Hamiltonian
-    agent =  AgentHamilton(game)
+    # agent =  AgentHamilton(game)
 
     
     while True:
