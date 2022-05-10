@@ -23,7 +23,7 @@ BLUE2 = (0, 100, 255)
 BLACK = (0,0,0)
 GREEN = (127,255,0)
 
-SPEED = 500
+SPEED = 50
 
 class SnakeGameAI:
     
